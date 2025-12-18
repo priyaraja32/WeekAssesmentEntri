@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>healthBot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <h1 class="chat-heading">AI Chatbot</h1>
+  <p style="text-align:center; font-style: italic; color: #d0d0f0; margin-top: -10px; user-select:none;">
+    Your creative gateway to instant answers.
+  </p>
+
+  <div class="center-content">
+    <p>
+      We're here to help!<br />
+      Click the chat icon below to start a conversation with our intelligent assistant.
+    </p>
+  </div>
+
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="HealthandWellnessChatbot"
+    agent-id="be3bd60e-b2dd-4e3f-bc40-06276d28c25d"
+    language-code="en">
+  </df-messenger>
+  
+</body>
+</html>
+
+
+

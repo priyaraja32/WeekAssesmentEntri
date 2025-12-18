@@ -1,0 +1,52 @@
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: #f0f0f5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+  
+    .chat-heading {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 40px 20px 10px;
+      user-select: none;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    
+    .center-content {
+      max-width: 700px;
+      margin: 0 auto 50px auto;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 30px 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      color: #e0e0f0;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      text-align: center;
+      user-select: none;
+    }
+
+    df-messenger {
+      --df-messenger-chat-window-width: 360px;
+      --df-messenger-chat-window-height: 480px;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      z-index: 9999;
+      background-color: #fff;
+    }
+
+
+
+
