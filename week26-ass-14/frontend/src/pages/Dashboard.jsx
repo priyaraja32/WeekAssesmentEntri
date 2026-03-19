@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import {
-  Users, TrendingUp, CheckSquare, Settings as SettingsIcon,
-  LogOut, Plus, Search, Edit2, Trash2, Zap, Bell, Menu, X
+  Users,
+   TrendingUp,
+    CheckSquare,
+     Settings as SettingsIcon,
+  LogOut, 
+  Plus,
+   Search, 
+   Edit2, 
+   Trash2, 
+   Zap, 
+   Bell,
+    Menu, X
 } from "lucide-react"
-import { getCustomers, createCustomer, updateCustomer, deleteCustomer } from "../services/api"
+import { getCustomers,
+   createCustomer, 
+   updateCustomer, 
+   deleteCustomer } from "../services/api"
 import Leads    from "../components/Leads"
 import Tasks    from "../components/Tasks"
 import Settings from "../components/Settings"
@@ -90,17 +103,16 @@ export default function Dashboard() {
   return (
     <div className="flex h-screen bg-slate-100 overflow-hidden">
 
-  // overlay for mobile sidebar
       {sidebarOpen && (
         <div className="fixed inset-0 bg-black/40 z-20 lg:hidden" onClick={() => setSidebar(false)} />
       )}
-// sidebar
+
       <aside className={`
         fixed lg:static inset-y-0 left-0 z-30 w-60 bg-white border-r border-slate-200
         flex flex-col transition-transform duration-300
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
       `}>
-     // sidebar header
+  
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-violet-600 rounded-lg flex items-center justify-center">
@@ -113,7 +125,7 @@ export default function Dashboard() {
           </button>
         </div>
 
-    // navigation items
+   
         <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
           {navItems.map(({ id, label, icon: Icon, badge }) => (
             <button key={id}
@@ -134,7 +146,7 @@ export default function Dashboard() {
           ))}
         </nav>
 
-// sidebar footer with user info and logout
+
         <div className="p-3 border-t border-slate-100">
           <div className="flex items-center gap-3 px-2 py-2">
             <Avatar name={user?.name} />
@@ -149,10 +161,10 @@ export default function Dashboard() {
           </div>
         </div>
       </aside>
-// main content area
+
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
 
-    // header with page title and user info
+   
         <header className="bg-white border-b border-slate-200 px-6 h-14 flex items-center gap-4 flex-shrink-0">
           <button className="lg:hidden text-slate-500 hover:text-slate-700" onClick={() => setSidebar(true)}>
             <Menu size={20} />
@@ -168,14 +180,14 @@ export default function Dashboard() {
           </div>
         </header>
 
-      // main content
+  
         <main className="flex-1 overflow-y-auto p-6">
 
-      // customers page with stats, search, and table
+     
           {page === "customers" && (
             <div className="space-y-5">
 
-            // stats cards
+            
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {stats.map(({ label, val, color, bg }) => (
                   <div key={label} className={`${bg} rounded-2xl p-5 border border-slate-200`}>
@@ -185,7 +197,7 @@ export default function Dashboard() {
                 ))}
               </div>
 
-            // search and add customer button
+            
               <div className="flex items-center gap-3">
                 <div className="relative flex-1 max-w-xs">
                   <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -202,7 +214,7 @@ export default function Dashboard() {
                 </button>
               </div>
 
-          // customers table
+         
               {loading ? (
                 <div className="flex flex-col items-center justify-center py-20 text-slate-400">
                   <div className="w-8 h-8 border-3 border-slate-200 border-t-violet-600 rounded-full animate-spin mb-3" />
@@ -266,7 +278,7 @@ export default function Dashboard() {
         </main>
       </div>
 
-// customer modal for add/edit
+
       {showForm && (
         <CustomerModal
           customer={editItem}
