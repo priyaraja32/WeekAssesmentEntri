@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API = axios.create({ baseURL: "https://api-crm-assesment.onrender.com/api" })
+const API = axios.create({ baseURL: "https://crm-assesment-ebon.vercel.app/api" })
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token")

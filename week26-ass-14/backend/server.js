@@ -11,9 +11,7 @@ const app = express()
 
 connectDB()
 app.use(cors({
-  origin: ["https://api-crm-assesment.onrender.com", "https://crm-assesment.onrender.com"
-
-  ],
+  origin: ["https://crm-assesment-ebon.vercel.app", "http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }))
