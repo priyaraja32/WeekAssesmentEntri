@@ -13,8 +13,8 @@ connectDB()
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",
-    "http://localhost:5174",
+    "https://api-crm-9xqm.onrender.com",
+    "https://api-crm-9xqm.onrender.com",
     "https://week-assesment-entri.vercel.app",  
     /\.vercel\.app$/                              
   ],
@@ -34,5 +34,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`)
+  console.log(`Server running on https://api-crm-9xqm.onrender.com:${PORT}`)
 })
