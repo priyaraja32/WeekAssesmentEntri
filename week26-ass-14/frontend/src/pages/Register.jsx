@@ -3,11 +3,30 @@ import { useNavigate } from "react-router-dom"
 import { Mail, Lock, User, Zap, CheckCircle } from "lucide-react"
 import { registerUser } from "../services/api"
 
+//  Moved OUTSIDE Register component
+const Field = ({ label, name, type = "text", placeholder, icon: Icon, value, onChange, error }) => (
+  <div>
+    <label className="text-sm font-medium text-slate-700 block mb-1.5">{label}</label>
+    <div className="relative">
+      <Icon size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+      <input
+        type={type} name={name} value={value} onChange={onChange}
+        placeholder={placeholder}
+        className={`w-full h-11 pl-10 pr-4 rounded-xl border text-sm outline-none transition-all
+          ${error
+            ? "border-red-400 bg-red-50 focus:ring-2 focus:ring-red-200"
+            : "border-slate-200 bg-slate-50 focus:border-violet-500 focus:ring-2 focus:ring-violet-100 focus:bg-white"}`}
+      />
+    </div>
+    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+  </div>
+)
+
 export default function Register() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [apiErr, setApiErr]   = useState("")
-  const [form, setForm]       = useState({ name:"", email:"", password:"" })
+  const [form, setForm]       = useState({ name: "", email: "", password: "" })
   const [errors, setErrors]   = useState({})
 
   const change = (e) => {
@@ -43,24 +62,6 @@ export default function Register() {
     }
   }
 
-  const Field = ({ label, name, type="text", placeholder, icon: Icon }) => (
-    <div>
-      <label className="text-sm font-medium text-slate-700 block mb-1.5">{label}</label>
-      <div className="relative">
-        <Icon size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-        <input
-          type={type} name={name} value={form[name]} onChange={change}
-          placeholder={placeholder}
-          className={`w-full h-11 pl-10 pr-4 rounded-xl border text-sm outline-none transition-all
-            ${errors[name]
-              ? "border-red-400 bg-red-50 focus:ring-2 focus:ring-red-200"
-              : "border-slate-200 bg-slate-50 focus:border-violet-500 focus:ring-2 focus:ring-violet-100 focus:bg-white"}`}
-        />
-      </div>
-      {errors[name] && <p className="text-red-500 text-xs mt-1">{errors[name]}</p>}
-    </div>
-  )
-
   return (
     <div className="min-h-screen flex">
       {/* LEFT */}
@@ -82,7 +83,7 @@ export default function Register() {
             Join thousands of teams already growing with Nexus CRM.
           </p>
           <div className="space-y-3">
-            {["Unlimited customer records","Real-time dashboard","Smart lead tracking","14-day free trial"].map(f => (
+            {["Unlimited customer records", "Real-time dashboard", "Smart lead tracking", "14-day free trial"].map(f => (
               <div key={f} className="flex items-center gap-3">
                 <CheckCircle size={16} className="text-violet-400 flex-shrink-0" />
                 <span className="text-slate-300 text-sm">{f}</span>
@@ -113,9 +114,9 @@ export default function Register() {
           )}
 
           <form onSubmit={submit} className="space-y-4">
-            <Field label="Full Name"    name="name"     placeholder="Name"           icon={User} />
-            <Field label="Work Email"   name="email"    placeholder="name@company.com"   icon={Mail} type="email" />
-            <Field label="Password"     name="password" placeholder="minimum six characters"  icon={Lock} type="password" />
+            <Field label="Full Name"  name="name"     type="text"     placeholder="Name"                  icon={User} value={form.name}     onChange={change} error={errors.name} />
+            <Field label="Work Email" name="email"    type="email"    placeholder="name@company.com"       icon={Mail} value={form.email}    onChange={change} error={errors.email} />
+            <Field label="Password"   name="password" type="password" placeholder="minimum six characters" icon={Lock} value={form.password} onChange={change} error={errors.password} />
 
             <p className="text-xs text-slate-400">
               By creating an account, you agree to our{" "}
@@ -126,7 +127,7 @@ export default function Register() {
             <button type="submit" disabled={loading}
               className="w-full h-11 bg-violet-600 hover:bg-violet-700 disabled:opacity-60 text-white font-semibold rounded-xl text-sm transition-all hover:shadow-lg hover:shadow-violet-200 active:scale-[0.98] flex items-center justify-center gap-2">
               {loading
-                ? <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"/> Creating account...</>
+                ? <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Creating account...</>
                 : "Create Account →"}
             </button>
           </form>

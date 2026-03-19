@@ -1,7 +1,6 @@
 import axios from "axios"
 
-
-const API = axios.create({ baseURL: "https://api-crm-9xqm.onrender.com/api" })
+const API = axios.create({ baseURL: "http://localhost:5000/api" })
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token")
@@ -21,9 +20,9 @@ API.interceptors.response.use(
   }
 )
 
-export const registerUser  = (data) => API.post("/auth/register", data)
-export const loginUser     = (data) => API.post("/auth/login", data)
-export const getCustomers  = ()     => API.get("/customers")
-export const createCustomer = (data) => API.post("/customers", data)
-export const updateCustomer = (id, data) => API.put(`/customers/${id}`, data)
-export const deleteCustomer = (id)  => API.delete(`/customers/${id}`)
+export const registerUser   = (data)     => API.post("/auth/register", data)
+export const loginUser      = (data)     => API.post("/auth/login", data)
+export const getCustomers   = ()         => API.get("/customers")
+export const createCustomer = (data)     => API.post("/customers", data)
+export const updateCustomer = (id, data) => API.put("/customers/" + id, data)
+export const deleteCustomer = (id)       => API.delete("/customers/" + id)
