@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const API = axios.create({ baseURL: "https://api-crm-9xqm.onrender.com" })
+const API = axios.create({ baseURL: "https://api-crm-9xqm.onrender.com/api" })
 
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token")
