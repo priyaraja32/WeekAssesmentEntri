@@ -9,14 +9,23 @@ dotenv.config()
 
 const app = express()
 
-connectDB()
-app.use(cors({
-  origin: ["https://crm-assesment-on.vercel.app", "http://localhost:5173"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}))
+
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',
+    'https://crm-assesment-ebon.vercel.app',
+    'https://crm-assesment-on.vercel.app'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}
+
+app.use(cors(corsOptions))
+
 app.use(express.json())
 
+//  Routes
 app.use("/api/auth", authRoutes)
 app.use("/api/customers", customerRoutes)
 
@@ -26,6 +35,13 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, () => {
-  console.log("Server running on https://api-crm-assesment.onrender.com:" + PORT)
+//  DB connect 
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("MongoDB Connected")
+    console.log(" Server running on http://localhost:" + PORT)
+  })
+}).catch((err) => {
+  console.error(" MongoDB Error:", err.message)
+  process.exit(1)
 })
