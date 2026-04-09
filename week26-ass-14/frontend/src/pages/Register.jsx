@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Mail, Lock, User, Zap, CheckCircle } from "lucide-react"
 import { registerUser } from "../services/api"
 
-//  Moved OUTSIDE Register component
+//   Register component
 const Field = ({ label, name, type = "text", placeholder, icon: Icon, value, onChange, error }) => (
   <div>
     <label className="text-sm font-medium text-slate-700 block mb-1.5">{label}</label>
