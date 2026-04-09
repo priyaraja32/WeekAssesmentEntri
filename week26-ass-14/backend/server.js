@@ -5,7 +5,7 @@ import dotenv from "dotenv"
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js"
 import customerRoutes from "./routes/customerRoutes.js"
-import dns from "dns";
+
 
 
 dotenv.config()
@@ -21,7 +21,7 @@ const corsOptions = {
     'http://localhost:5173',
     'https://crm-assesment-ebon.vercel.app',
     'https://crm-assesment-on.vercel.app',
-    
+
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
